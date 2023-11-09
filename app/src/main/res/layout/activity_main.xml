@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnCadastrarCategoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastrar Categoria" />
+
+    <Button
+        android:id="@+id/btnGerenciarCategorias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnCadastrarCategoria"
+        android:layout_marginTop="16dp"
+        android:text="Gerenciar Categorias" />
+
+    <Button
+        android:id="@+id/btnCadastrarFilmes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnGerenciarCategorias"
+        android:layout_marginTop="16dp"
+        android:text="Cadastrar Filmes" />
+
+</RelativeLayout>

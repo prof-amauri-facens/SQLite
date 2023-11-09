@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "826747902814",
+    "project_id": "aulasqlite-761a7",
+    "storage_bucket": "aulasqlite-761a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826747902814:android:9f421b4f649f010cedcdcf",
+        "android_client_info": {
+          "package_name": "br.facens.aula.aulasqlite"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1j3CAgGbRfj-Mxa1OmT8v1GE9Swvml-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
