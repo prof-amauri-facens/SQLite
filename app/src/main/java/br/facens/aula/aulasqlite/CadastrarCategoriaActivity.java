@@ -47,7 +47,7 @@ public class CadastrarCategoriaActivity extends AppCompatActivity {
                     colunas em particular. Definindo o "nullColumnHack" como null, você permite que o Android
                      insira um valor padrão nulo nessas colunas, caso seja necessário.
                      */
-                    long newRowId = db.insert("categorias", null, values);
+                    long newRowId = db.insert(DBHelper.TABLE_CATEGORIAS, null, values);
 
                     // Fecha o banco de dados
                     db.close();
