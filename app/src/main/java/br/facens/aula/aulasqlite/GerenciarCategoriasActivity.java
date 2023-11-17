@@ -74,7 +74,8 @@ public class GerenciarCategoriasActivity extends AppCompatActivity {
         while (cursor.moveToNext()) {
             @SuppressLint("Range") long id = cursor.getLong(cursor.getColumnIndex(DBHelper.COLUMN_ID));
             @SuppressLint("Range") String nome = cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_NOME));
-            categoriaAdapter.add(id + ": " + nome);
+            @SuppressLint("Range") int utilizacoes = cursor.getInt(cursor.getColumnIndex("utilizacoes"));
+            categoriaAdapter.add(id + ": " + nome + ": " + utilizacoes);
         }
 
         cursor.close();

@@ -1,6 +1,7 @@
 package br.facens.aula.aulasqlite;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -110,7 +111,22 @@ public class CadastrarFilmesActivity extends AppCompatActivity {
                     if (error == null) {
                         // Sucesso: Os dados foram enviados com sucesso para o Firebase.
                         // Você pode fornecer feedback ao usuário aqui, por exemplo, exibindo um Toast.
+
                         Toast.makeText(CadastrarFilmesActivity.this, "Filme enviado com sucesso para o Firebase.", Toast.LENGTH_SHORT).show();
+                        DBHelper dbHelper = new DBHelper(CadastrarFilmesActivity.this);
+                        String query = "SELECT utilizacoes FROM categorias WHERE nome = ?";
+
+                        SQLiteDatabase db = dbHelper.getWritableDatabase(); // Substitua 'dbHelper' pelo nome da sua instância de DBHelper.
+                        Cursor cursor = db.rawQuery(query, new String[]{categoriaSelecionada});
+
+                        if (cursor != null && cursor.moveToFirst()){
+                            @SuppressLint("Range") int utilizacoes = cursor.getInt(cursor.getColumnIndex("utilizacoes"));
+                            utilizacoes++;
+                            ContentValues values = new ContentValues();
+                            values.put("utilizacoes", utilizacoes);
+                            db.update(DBHelper.TABLE_CATEGORIAS, values, "nome" + " = ?", new String[]{String.valueOf(categoriaSelecionada)});
+                        }
+
                     } else {
                         // Erro: Houve um problema ao enviar os dados.
                         // Você pode fornecer feedback de erro ao usuário aqui, por exemplo, exibindo um Toast com uma mensagem de erro.

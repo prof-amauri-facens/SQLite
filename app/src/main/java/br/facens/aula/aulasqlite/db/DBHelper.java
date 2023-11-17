@@ -9,7 +9,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "categorias.db";
 
     // Versão do banco de dados
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Nome da tabela de categorias
     public static final String TABLE_CATEGORIAS = "categorias";
@@ -42,6 +42,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // Cria a tabela de categorias quando o banco de dados é criado
         db.execSQL(TABLE_CREATE);
+        onUpgrade(db, DATABASE_VERSION, DATABASE_VERSION);
     }
 
     /*
@@ -56,6 +57,14 @@ public class DBHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // Atualiza o banco de dados, se necessário
+        if (newVersion == 2){
+            db.execSQL("ALTER TABLE " + TABLE_CATEGORIAS + " ADD COLUMN utilizacoes INTEGER");
+        }
+    }
+
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Atualiza o banco de dados, se necessário
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CATEGORIAS);
         onCreate(db);
